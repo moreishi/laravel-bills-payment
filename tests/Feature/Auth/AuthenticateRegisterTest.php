@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Auth;
 
-use Tests\Feature\AuthBaseTest;
+use Tests\Feature\Auth\AuthBaseTest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\User;
 

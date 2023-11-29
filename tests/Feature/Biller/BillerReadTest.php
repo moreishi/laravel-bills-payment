@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Biller;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class AuthenticateForgotPasswordTest extends TestCase
+class BillerReadTest extends TestCase
 {
     /**
      * A basic feature test example.
