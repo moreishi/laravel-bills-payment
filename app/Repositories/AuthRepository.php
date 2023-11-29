@@ -23,7 +23,7 @@ class AuthRepository implements IAuthRepository {
             ], 422);
         }
 
-        $user = User::where('email', $loginDTO->email)->with('role')->firstOrFail();
+        $user = User::where('email', $loginDTO->email)->firstOrFail();
         
         $token = $user->createToken('authToken')->plainTextToken;
         

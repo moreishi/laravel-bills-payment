@@ -2,18 +2,19 @@
 
 namespace Tests\Feature\Biller;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
+use Tests\Feature\Biller\BillerBaseTest;
+use App\Models\Biller;
 
-class BillerDeleteTest extends TestCase
+class BillerDeleteTest extends BillerBaseTest
 {
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_delete_biller(): void
     {
-        $response = $this->get('/');
+        $biller = Biller::factory()->create();
+
+        $response = $this->actingAs(BillerBaseTest::mockAsUser())->delete(BillerBaseTest::HTTP_API_BILLER . '/' . $biller->id);
 
         $response->assertStatus(200);
     }
