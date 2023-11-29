@@ -17,7 +17,7 @@ class AuthRepository implements IAuthRepository {
             return response()->json(['message' => 'Email not found'], 404);
         }
 
-        if (!\Auth::attempt(["email" => $loginDTO->email, "password" => $loginDTO->password])) {
+        if (!Auth::attempt(["email" => $loginDTO->email, "password" => $loginDTO->password])) {
             return response()->json([
                 'message' => 'Invalid login details'
             ], 422);
