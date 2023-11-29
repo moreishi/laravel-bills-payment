@@ -21,6 +21,8 @@ class UserService implements IUserService {
             'password' => Hash::make($password)
         ]);
 
+        $user->assignRole('member');
+
         return $user;
     }
 
