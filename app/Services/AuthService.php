@@ -20,6 +20,8 @@ class AuthService implements IAuthService {
             'password' => Hash::make($registerDTO->password),
         ]);
 
+        $user->assignRole('member');
+
         $token = $user->createToken('authToken')->plainTextToken;
 
         return response()->json([

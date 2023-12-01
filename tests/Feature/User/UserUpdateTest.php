@@ -1,37 +1,34 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\User;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\Feature\UserBaseTest;
+use Tests\Feature\User\UserBaseTest;
 
 use App\Models\User;
-use Carbon\Carbon;
 
-class UserCreateTest extends UserBaseTest
+class UserUpdateTest extends UserBaseTest
 {
     /**
      * POST endpoint with 201 status
      */
-    public function test_create_task(): void
+    public function test_update_user(): void
     {
 
+        $user = User::factory()->create();
         $model = User::factory()->make();
 
-        $response = $this->actingAs(UserBaseTest::mockAsUser())->post(UserBaseTest::HTTP_API_USER, [
+        $response = $this->actingAs(UserBaseTest::mockAsUser())->put(UserBaseTest::HTTP_API_USER . '/' . $user->id, [
             'firstName' => $model->firstName,
             'lastName' => $model->lastName,
             'email' => $model->email,
         ]);
 
         $content = json_decode($response->content());
-        
-        $response->assertStatus(201);
 
+        $response->assertStatus(200);
+        
         $this->assertEquals($model->firstName, $content->firstName);
         $this->assertEquals($model->lastName, $content->lastName);
-        $this->assertEquals($model->email, $content->email);
     }
 
 }

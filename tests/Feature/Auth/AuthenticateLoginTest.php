@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Auth;
 
 use Symfony\Component\HttpFoundation\Response;
-use Tests\Feature\AuthBaseTest;
+use Tests\Feature\Auth\AuthBaseTest;
 use App\Models\User;
 
 class AuthenticateLoginTest extends AuthBaseTest
