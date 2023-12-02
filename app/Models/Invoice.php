@@ -7,19 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Note;
 
-class Biller extends Model
+class Invoice extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'billerName',
-        'billerCode',
-        'billerDescription'
-    ];
+    protected $guarded = [];
 
     public function notes()
     {
         return $this->morphMany(Note::class, 'noteable');
     }
+
 
 }

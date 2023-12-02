@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+use App\Models\Note;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
@@ -44,4 +45,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function notes()
+    {
+        return $this->morphMany(Note::class, 'noteable');
+    }
 }
