@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\BillerController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\InvoiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->apiResource('/users', UserController::class);
 Route::middleware('auth:sanctum')->apiResource('/billers', BillerController::class);
 Route::middleware('auth:sanctum')->apiResource('/products', ProductController::class);
+Route::middleware('auth:sanctum')->apiResource('/invoices', InvoiceController::class);
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
